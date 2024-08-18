@@ -9,7 +9,6 @@ const ActiveCollaborators = () => {
     return <div>Error: Unable to fetch collaborators.</div>;
   }
   const collaborators = others.map((other) => other.info);
-  console.log("Collaborators:",collaborators)
   if (!collaborators || collaborators.length === 0) {
     console.log("No collaborators found");
     return <div>No collaborators found.</div>;

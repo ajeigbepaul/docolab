@@ -9,15 +9,12 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import ActiveCollaborators from "@/components/ActiveCollaborators";
 const Document = async ({ params: { id } }: SearchParamProps) => {
   const clerkUser = await currentUser();
-  console.log("User", clerkUser)
   if(!clerkUser) redirect('/sign-in');
 
   const room = await getDocument({
     roomId: id,
     userId: clerkUser.emailAddresses[0].emailAddress,
   });
-  console.log("Rooms", room)
-
   if(!room) redirect('/');
   // TODO: ASSESS THE PERMISSION OF THE USER TO ACESS THE ROOM
   // const userIds = Object.keys(room.usersAccesses);
